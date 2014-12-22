@@ -3,19 +3,14 @@
   "version": "0.0.0",
   "description": "",
   "dependencies": {
-    "gulp": "^3.8.7",
-    "gulp-autoprefixer": "^2.0.0",
-    "gulp-compass": "^2.0.3",
-    "gulp-connect": "^2.2.0",
-    "gulp-less": "^1.3.6",
-    "gulp-plumber": "^0.6.6",
-    "gulp-rev": "^2.0.1",
-    "gulp-sass": "*",
-    "gulp-sourcemaps": "^1.1.0",
-    "gulp-watch": "*",
+    "body-parser": "^1.10.0",
+    "express": "^4.10.6",
+    "express-livereload": "0.0.24",
+    "livereload": "^0.3.4",
     "lodash": "^2.4.1",
     "mustache": "^1.0.0",
-    "node-sass": "^1.2.3"
+    "node-sass": "^1.2.3",
+    "open": "0.0.5"
   },
   "main": "index.js",
   "scripts": {

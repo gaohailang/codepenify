@@ -1,7 +1,10 @@
 var express = require('express');
+var livereload = require('express-livereload');
+var bodyParser = require('body-parser');
+
 var app = express();
 var server = require('http').createServer(app);
-var bodyParser = require('body-parser');
+livereload(app, config={watchDir: '.', exts: ['md']});
 
 var parseCodepenMd = require('./parse');
 

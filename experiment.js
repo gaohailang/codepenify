@@ -8,7 +8,7 @@ var Mustache = require('Mustache');
 var x = require('lodash');
 var sass = require('node-sass');
 
-var content = fs.readFileSync('css3-pseudo-sound-bars.md', 'utf8');
+var content = fs.readFileSync('test-stagger-ng.md', 'utf8');
 
 var blockReg = /(```(html|css|js)\s*\n)((.|\n)*?)(```\s*\n?)/;
 var annotationReg = /^<!--\n((.|\n)*?)-->/;
@@ -20,7 +20,7 @@ function getAnnotation(text, type) {
     try {
         part = text.split(/^<!--\n((.|\n)*?)-->\n/);
         part[1].trim().split(/\n/).forEach(function(item, idx) {
-            var parts = item.split(':');
+            var parts = item.split(/:(?!\/)/); // 去除 http:// 等
             _dict[parts[0]] = parts[1].trim();
         });
         textMap[type] = part[3];

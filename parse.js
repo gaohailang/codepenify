@@ -28,7 +28,7 @@ function parseCodepenMd(filename) {
         try {
             part = text.split(/^<!--\n((.|\n)*?)-->\n/);
             part[1].trim().split(/\n/).forEach(function(item, idx) {
-                var parts = item.split(':');
+                var parts = item.split(/:(?!\/)/); // 去除 http:// 等
                 _dict[parts[0]] = parts[1].trim();
             });
             textMap[type] = part[3];
@@ -65,9 +65,10 @@ function parseCodepenMd(filename) {
     } else {
         annotationMap.html.link = [];
     }
+    annotationMap.html.link.splice(0, 0,"<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js\"></' + 'script>')</script>");
 
     return Mustache.render(baseTpl, {
-        Title: 'css3-pseudo-sound-bars.md',
+        Title: filename,
         MetaBlock: annotationMap.html.meta ? annotationMap.html.meta.replace(',', '\n') : '',
         LinkBlock: annotationMap.html.link.join('\n'),
         StyleBlock: textMap.css || '',
