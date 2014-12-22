@@ -68,7 +68,7 @@ function parseCodepenMd(filename) {
     annotationMap.html.link.splice(0, 0,"<script>document.write('<script src=\"http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js\"></' + 'script>')</script>");
 
     return Mustache.render(baseTpl, {
-        Title: filename,
+        Title: filename.replace(/\//g, '--'),
         MetaBlock: annotationMap.html.meta ? annotationMap.html.meta.replace(',', '\n') : '',
         LinkBlock: annotationMap.html.link.join('\n'),
         StyleBlock: textMap.css || '',
